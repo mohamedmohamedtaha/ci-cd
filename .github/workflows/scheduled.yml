@@ -1,0 +1,10 @@
+on: 
+  schedule:
+    - cron: "0 0 * * *" # IT will run 12 with time grenetion
+
+jobs:
+  daily-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: echo "Running the scheduled task"
