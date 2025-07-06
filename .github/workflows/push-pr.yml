@@ -1,0 +1,28 @@
+# I want that code chnages to the main branch trigger a pull request to the develop vranch, an push 
+# that before push to the main branch.
+# We handle two events push and pull_request 
+on:
+    push:
+        branches:
+            - main
+            - "release/**"
+
+        paths:
+            - "src/**"    
+
+    pull_request:
+         branches:
+            - main
+            - "release/**"
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4.2.2 # This action checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+
+            - name: Run tests
+              run: npm test 
+
+
+
